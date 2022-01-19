@@ -1,36 +1,762 @@
-/* https://github.com/Richienb/scratch-http v0.1.0 */
-'use strict';(function(){function n(e){"@babel/helpers - typeof";n="function"===typeof Symbol&&"symbol"===typeof Symbol.iterator?function(c){return typeof c}:function(c){return c&&"function"===typeof Symbol&&c.constructor===Symbol&&c!==Symbol.prototype?"symbol":typeof c};return n(e)}function K(e,c){if(!(e instanceof c))throw new TypeError("Cannot call a class as a function");}function L(e,c){for(var b=0;b<c.length;b++){var a=c[b];a.enumerable=a.enumerable||!1;a.configurable=!0;"value"in a&&(a.writable=
-!0);Object.defineProperty(e,a.key,a)}}function V(e,c,b){c&&L(e.prototype,c);b&&L(e,b);return e}function M(e,c){var b=Object.keys(e);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);c&&(a=a.filter(function(a){return Object.getOwnPropertyDescriptor(e,a).enumerable}));b.push.apply(b,a)}return b}function y(e){for(var c=1;c<arguments.length;c++){var b=null!=arguments[c]?arguments[c]:{};c%2?M(Object(b),!0).forEach(function(a){var c=b[a];a in e?Object.defineProperty(e,a,{value:c,enumerable:!0,
-configurable:!0,writable:!0}):e[a]=c}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(b)):M(Object(b)).forEach(function(a){Object.defineProperty(e,a,Object.getOwnPropertyDescriptor(b,a))})}return e}function W(e,c){if("function"!==typeof c&&null!==c)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(c&&c.prototype,{constructor:{value:e,writable:!0,configurable:!0}});c&&B(e,c)}function C(e){C=Object.setPrototypeOf?
-Object.getPrototypeOf:function(c){return c.__proto__||Object.getPrototypeOf(c)};return C(e)}function B(e,c){B=Object.setPrototypeOf||function(b,a){b.__proto__=a;return b};return B(e,c)}function N(){if("undefined"===typeof Reflect||!Reflect.construct||Reflect.construct.sham)return!1;if("function"===typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch(e){return!1}}function D(e,c,b){D=N()?Reflect.construct:function(a,b,c){var d=[null];d.push.apply(d,
-b);a=new (Function.bind.apply(a,d));c&&B(a,c.prototype);return a};return D.apply(null,arguments)}function E(e){var c="function"===typeof Map?new Map:void 0;E=function(b){function a(){return D(b,arguments,C(this).constructor)}if(null===b||-1===Function.toString.call(b).indexOf("[native code]"))return b;if("function"!==typeof b)throw new TypeError("Super expression must either be null or a function");if("undefined"!==typeof c){if(c.has(b))return c.get(b);c.set(b,a)}a.prototype=Object.create(b.prototype,
-{constructor:{value:a,enumerable:!1,writable:!0,configurable:!0}});return B(a,b)};return E(e)}function X(e){var c=N();return function(){var b=C(e);if(c){var a=C(this).constructor;b=Reflect.construct(b,arguments,a)}else b=b.apply(this,arguments);if(!b||"object"!==typeof b&&"function"!==typeof b){if(void 0===this)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");b=this}return b}}function O(e,c,b){return b={path:c,exports:{},require:function(a,b){throw Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs");
-}},e(b,b.exports),b.exports}var F=Object.prototype.hasOwnProperty,u=Array.isArray,m=function(){for(var e=[],c=0;256>c;++c)e.push("%"+((16>c?"0":"")+c.toString(16)).toUpperCase());return e}(),P=function(e,c){c=c&&c.plainObjects?Object.create(null):{};for(var b=0;b<e.length;++b)"undefined"!==typeof e[b]&&(c[b]=e[b]);return c},w={arrayToObject:P,assign:function(e,c){return Object.keys(c).reduce(function(b,a){b[a]=c[a];return b},e)},combine:function(e,c){return[].concat(e,c)},compact:function(e){for(var c=
-[{obj:{o:e},prop:"o"}],b=[],a=0;a<c.length;++a){var d=c[a];d=d.obj[d.prop];for(var f=Object.keys(d),k=0;k<f.length;++k){var g=f[k],h=d[g];"object"===n(h)&&null!==h&&-1===b.indexOf(h)&&(c.push({obj:d,prop:g}),b.push(h))}}for(;1<c.length;)if(b=c.pop(),a=b.obj[b.prop],u(a)){d=[];for(f=0;f<a.length;++f)"undefined"!==typeof a[f]&&d.push(a[f]);b.obj[b.prop]=d}return e},decode:function(e,c,b){e=e.replace(/\+/g," ");if("iso-8859-1"===b)return e.replace(/%[0-9a-f]{2}/gi,unescape);try{return decodeURIComponent(e)}catch(a){return e}},
-encode:function(e,c,b){if(0===e.length)return e;c=e;"symbol"===n(e)?c=Symbol.prototype.toString.call(e):"string"!==typeof e&&(c=String(e));if("iso-8859-1"===b)return escape(c).replace(/%u[0-9a-f]{4}/gi,function(a){return"%26%23"+parseInt(a.slice(2),16)+"%3B"});e="";for(b=0;b<c.length;++b){var a=c.charCodeAt(b);45===a||46===a||95===a||126===a||48<=a&&57>=a||65<=a&&90>=a||97<=a&&122>=a?e+=c.charAt(b):128>a?e+=m[a]:2048>a?e+=m[192|a>>6]+m[128|a&63]:55296>a||57344<=a?e+=m[224|a>>12]+m[128|a>>6&63]+m[128|
-a&63]:(b+=1,a=65536+((a&1023)<<10|c.charCodeAt(b)&1023),e+=m[240|a>>18]+m[128|a>>12&63]+m[128|a>>6&63]+m[128|a&63])}return e},isBuffer:function(e){return e&&"object"===n(e)?!!(e.constructor&&e.constructor.isBuffer&&e.constructor.isBuffer(e)):!1},isRegExp:function(e){return"[object RegExp]"===Object.prototype.toString.call(e)},maybeMap:function(e,c){if(u(e)){for(var b=[],a=0;a<e.length;a+=1)b.push(c(e[a]));return b}return c(e)},merge:function d(c,b,a){if(!b)return c;if("object"!==n(b)){if(u(c))c.push(b);
-else if(c&&"object"===n(c)){if(a&&(a.plainObjects||a.allowPrototypes)||!F.call(Object.prototype,b))c[b]=!0}else return[c,b];return c}if(!c||"object"!==n(c))return[c].concat(b);var f=c;u(c)&&!u(b)&&(f=P(c,a));return u(c)&&u(b)?(b.forEach(function(b,g){if(F.call(c,g)){var h=c[g];h&&"object"===n(h)&&b&&"object"===n(b)?c[g]=d(h,b,a):c.push(b)}else c[g]=b}),c):Object.keys(b).reduce(function(c,g){var h=b[g];F.call(c,g)?c[g]=d(c[g],h,a):c[g]=h;return c},f)}},Y=String.prototype.replace,Z=/%20/g,x={RFC1738:"RFC1738",
-RFC3986:"RFC3986"},z=w.assign({"default":x.RFC3986,formatters:{RFC1738:function(c){return Y.call(c,Z,"+")},RFC3986:function(c){return String(c)}}},x),aa=Object.prototype.hasOwnProperty,Q={brackets:function(c){return c+"[]"},comma:"comma",indices:function(c,b){return c+"["+b+"]"},repeat:function(c){return c}},A=Array.isArray,ba=Array.prototype.push,R=function(c,b){ba.apply(c,A(b)?b:[b])},ca=Date.prototype.toISOString;x=z["default"];var p={addQueryPrefix:!1,allowDots:!1,charset:"utf-8",charsetSentinel:!1,
-delimiter:"&",encode:!0,encoder:w.encode,encodeValuesOnly:!1,format:x,formatter:z.formatters[x],indices:!1,serializeDate:function(c){return ca.call(c)},skipNulls:!1,strictNullHandling:!1},da=function(c){return"string"===typeof c||"number"===typeof c||"boolean"===typeof c||"symbol"===n(c)||"bigint"===typeof c},fa=function ea(b,a,d,f,k,g,h,q,l,n,r,v,t){"function"===typeof h?b=h(a,b):b instanceof Date?b=n(b):"comma"===d&&A(b)&&(b=w.maybeMap(b,function(a){return a instanceof Date?n(a):a}).join(","));
-if(null===b){if(f)return g&&!v?g(a,p.encoder,t,"key"):a;b=""}if(da(b)||w.isBuffer(b))return g?(a=v?a:g(a,p.encoder,t,"key"),[r(a)+"="+r(g(b,p.encoder,t,"value"))]):[r(a)+"="+r(String(b))];var H=[];if("undefined"===typeof b)return H;if(A(h))var m=h;else m=Object.keys(b),m=q?m.sort(q):m;for(var G=0;G<m.length;++G){var u=m[G],x=b[u];k&&null===x||(u=A(b)?"function"===typeof d?d(a,u):a:a+(l?"."+u:"["+u+"]"),R(H,ea(x,u,d,f,k,g,h,q,l,n,r,v,t)))}return H},I=Object.prototype.hasOwnProperty,ha=Array.isArray,
-t={allowDots:!1,allowPrototypes:!1,arrayLimit:20,charset:"utf-8",charsetSentinel:!1,comma:!1,decoder:w.decode,delimiter:"&",depth:5,ignoreQueryPrefix:!1,interpretNumericEntities:!1,parameterLimit:1E3,parseArrays:!0,plainObjects:!1,strictNullHandling:!1},ia=function(b){return b.replace(/&#(\d+);/g,function(a,b){return String.fromCharCode(parseInt(b,10))})},S=function(b,a){return b&&"string"===typeof b&&a.comma&&-1<b.indexOf(",")?b.split(","):b},ja=function(b,a){var d={};b=(a.ignoreQueryPrefix?b.replace(/^\?/,
-""):b).split(a.delimiter,Infinity===a.parameterLimit?void 0:a.parameterLimit);var f=-1,k,g=a.charset;if(a.charsetSentinel)for(k=0;k<b.length;++k)0===b[k].indexOf("utf8=")&&("utf8=%E2%9C%93"===b[k]?g="utf-8":"utf8=%26%2310003%3B"===b[k]&&(g="iso-8859-1"),f=k,k=b.length);for(k=0;k<b.length;++k)if(k!==f){var h=b[k],q=h.indexOf("]="),l=-1===q?h.indexOf("="):q+1;-1===l?(q=a.decoder(h,t.decoder,g,"key"),l=a.strictNullHandling?null:""):(q=a.decoder(h.slice(0,l),t.decoder,g,"key"),l=w.maybeMap(S(h.slice(l+
-1),a),function(b){return a.decoder(b,t.decoder,g,"value")}));l&&a.interpretNumericEntities&&"iso-8859-1"===g&&(l=ia(l));-1<h.indexOf("[]=")&&(l=ha(l)?[l]:l);I.call(d,q)?d[q]=w.combine(d[q],l):d[q]=l}return d},T={formats:z,parse:function(b,a){if(a){if(null!==a.decoder&&void 0!==a.decoder&&"function"!==typeof a.decoder)throw new TypeError("Decoder has to be a function.");if("undefined"!==typeof a.charset&&"utf-8"!==a.charset&&"iso-8859-1"!==a.charset)throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined");
-a={allowDots:"undefined"===typeof a.allowDots?t.allowDots:!!a.allowDots,allowPrototypes:"boolean"===typeof a.allowPrototypes?a.allowPrototypes:t.allowPrototypes,arrayLimit:"number"===typeof a.arrayLimit?a.arrayLimit:t.arrayLimit,charset:"undefined"===typeof a.charset?t.charset:a.charset,charsetSentinel:"boolean"===typeof a.charsetSentinel?a.charsetSentinel:t.charsetSentinel,comma:"boolean"===typeof a.comma?a.comma:t.comma,decoder:"function"===typeof a.decoder?a.decoder:t.decoder,delimiter:"string"===
-typeof a.delimiter||w.isRegExp(a.delimiter)?a.delimiter:t.delimiter,depth:"number"===typeof a.depth||!1===a.depth?+a.depth:t.depth,ignoreQueryPrefix:!0===a.ignoreQueryPrefix,interpretNumericEntities:"boolean"===typeof a.interpretNumericEntities?a.interpretNumericEntities:t.interpretNumericEntities,parameterLimit:"number"===typeof a.parameterLimit?a.parameterLimit:t.parameterLimit,parseArrays:!1!==a.parseArrays,plainObjects:"boolean"===typeof a.plainObjects?a.plainObjects:t.plainObjects,strictNullHandling:"boolean"===
-typeof a.strictNullHandling?a.strictNullHandling:t.strictNullHandling}}else a=t;if(""===b||null===b||"undefined"===typeof b)return a.plainObjects?Object.create(null):{};for(var d="string"===typeof b?ja(b,a):b,f=a.plainObjects?Object.create(null):{},k=Object.keys(d),g=0;g<k.length;++g){var h=k[g];a:{var q=h;h=d[h];var l=a,n="string"===typeof b;if(q){q=l.allowDots?q.replace(/\.([^.[]+)/g,"[$1]"):q;var r=/(\[[^[\]]*])/,v=/(\[[^[\]]*])/g,m=(r=0<l.depth&&r.exec(q))?q.slice(0,r.index):q,p=[];if(m){if(!l.plainObjects&&
-I.call(Object.prototype,m)&&!l.allowPrototypes){h=void 0;break a}p.push(m)}for(m=0;0<l.depth&&null!==(r=v.exec(q))&&m<l.depth;){m+=1;if(!l.plainObjects&&I.call(Object.prototype,r[1].slice(1,-1))&&!l.allowPrototypes){h=void 0;break a}p.push(r[1])}r&&p.push("["+q.slice(r.index)+"]");q=p;h=n?h:S(h,l);for(n=q.length-1;0<=n;--n)r=q[n],"[]"===r&&l.parseArrays?v=[].concat(h):(v=l.plainObjects?Object.create(null):{},p="["===r.charAt(0)&&"]"===r.charAt(r.length-1)?r.slice(1,-1):r,m=parseInt(p,10),l.parseArrays||
-""!==p?!isNaN(m)&&r!==p&&String(m)===p&&0<=m&&l.parseArrays&&m<=l.arrayLimit?(v=[],v[m]=h):v[p]=h:v={0:h}),h=v}else h=void 0}f=w.merge(f,h,a)}return w.compact(f)},stringify:function(b,a){if(a){if(null!==a.encoder&&void 0!==a.encoder&&"function"!==typeof a.encoder)throw new TypeError("Encoder has to be a function.");var d=a.charset||p.charset;if("undefined"!==typeof a.charset&&"utf-8"!==a.charset&&"iso-8859-1"!==a.charset)throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined");
-var f=z["default"];if("undefined"!==typeof a.format){if(!aa.call(z.formatters,a.format))throw new TypeError("Unknown format option provided.");f=a.format}f=z.formatters[f];var k=p.filter;if("function"===typeof a.filter||A(a.filter))k=a.filter;d={addQueryPrefix:"boolean"===typeof a.addQueryPrefix?a.addQueryPrefix:p.addQueryPrefix,allowDots:"undefined"===typeof a.allowDots?p.allowDots:!!a.allowDots,charset:d,charsetSentinel:"boolean"===typeof a.charsetSentinel?a.charsetSentinel:p.charsetSentinel,delimiter:"undefined"===
-typeof a.delimiter?p.delimiter:a.delimiter,encode:"boolean"===typeof a.encode?a.encode:p.encode,encoder:"function"===typeof a.encoder?a.encoder:p.encoder,encodeValuesOnly:"boolean"===typeof a.encodeValuesOnly?a.encodeValuesOnly:p.encodeValuesOnly,filter:k,formatter:f,serializeDate:"function"===typeof a.serializeDate?a.serializeDate:p.serializeDate,skipNulls:"boolean"===typeof a.skipNulls?a.skipNulls:p.skipNulls,sort:"function"===typeof a.sort?a.sort:null,strictNullHandling:"boolean"===typeof a.strictNullHandling?
-a.strictNullHandling:p.strictNullHandling}}else d=p;if("function"===typeof d.filter)f=d.filter,b=f("",b);else if(A(d.filter))var g=f=d.filter;f=[];if("object"!==n(b)||null===b)return"";a=Q[a&&a.arrayFormat in Q?a.arrayFormat:a&&"indices"in a?a.indices?"indices":"repeat":"indices"];g||(g=Object.keys(b));d.sort&&g.sort(d.sort);for(k=0;k<g.length;++k){var h=g[k];d.skipNulls&&null===b[h]||R(f,fa(b[h],h,a,d.strictNullHandling,d.skipNulls,d.encode?d.encoder:null,d.filter,d.sort,d.allowDots,d.serializeDate,
-d.formatter,d.encodeValuesOnly,d.charset))}g=f.join(d.delimiter);b=!0===d.addQueryPrefix?"?":"";d.charsetSentinel&&(b="iso-8859-1"===d.charset?b+"utf8=%26%2310003%3B&":b+"utf8=%E2%9C%93&");return 0<g.length?b+g:""}},ka=O(function(b,a){a.__esModule=!0;a["default"]=function(a,b){var d=a.split("?");a=d[0];var g=d[1];d=(g||"").split("#")[0];g=g&&1<g.split("#").length?"#"+g.split("#")[1]:"";d=T.parse(d);for(var h in b)d[h]=b[h];d=T.stringify(d);""!==d&&(d="?"+d);return a+d+g}}),la=function(){function b(a,
-b,f,k){if("number"!==typeof a)throw new TypeError("statusCode must be a number but was "+n(a));if(null===b)throw new TypeError("headers cannot be null");if("object"!==n(b))throw new TypeError("headers must be an object but was "+n(b));this.statusCode=a;a={};for(var d in b)a[d.toLowerCase()]=b[d];this.headers=a;this.body=f;this.url=k}b.prototype.isError=function(){return 0===this.statusCode||400<=this.statusCode};b.prototype.getBody=function(a){if(0===this.statusCode)throw a=Error("This request to "+
-this.url+" resulted in a status code of 0. This usually indicates some kind of network error in a browser (e.g. CORS not being set up or the DNS failing to resolve):\n"+this.body.toString()),a.statusCode=this.statusCode,a.headers=this.headers,a.body=this.body,a.url=this.url,a;if(300<=this.statusCode)throw a=Error("Server responded to "+this.url+" with status code "+this.statusCode+":\n"+this.body.toString()),a.statusCode=this.statusCode,a.headers=this.headers,a.body=this.body,a.url=this.url,a;return a&&
-"string"!==typeof this.body?this.body.toString(a):this.body};return b}(),ma=O(function(b,a){function d(a,b,d){var f=new XMLHttpRequest;if("string"!==typeof a)throw new TypeError("The method must be a string.");b&&"object"===n(b)&&(b=b.href);if("string"!==typeof b)throw new TypeError("The URL/path must be a string.");if(null===d||void 0===d)d={};if("object"!==n(d))throw new TypeError("Options must be an object (or null).");a=a.toUpperCase();d.headers=d.headers||{};var g;(g=/^([\w-]+:)?\/\/([^\/]+)/.exec(b))&&
-g[2]!=location.host||(d.headers["X-Requested-With"]="XMLHttpRequest");d.qs&&(b=ka["default"](b,d.qs));d.json&&(d.body=JSON.stringify(d.json),d.headers["content-type"]="application/json");d.form&&(d.body=d.form);f.open(a,b,!1);for(var h in d.headers)f.setRequestHeader(h.toLowerCase(),""+d.headers[h]);f.send(d.body?d.body:null);var k={};f.getAllResponseHeaders().split("\r\n").forEach(function(a){a=a.split(":");1<a.length&&(k[a[0].toLowerCase()]=a.slice(1).join(":").trim())});return new la(f.status,
-k,f.responseText,b)}a.__esModule=!0;var f=FormData;a.FormData=f;a["default"]=d;b.exports=d;b.exports["default"]=d;b.exports.FormData=f}),J=function(b){function a(b,k){K(this,a);b=d.call(this,b);b.name="HTTPError";b.statusCode=k;return b}W(a,b);var d=X(a);return a}(E(Error)),na=function(b){var a=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};a=y({method:"get",prefixUrl:"",retry:{limit:2,delay:0},timeout:1E4,responseType:a.json?"json":"text",throwHttpErrors:!0},a);var d={qs:a.searchParams,
-headers:a.headers,body:a.body,json:a.json,timeout:a.timeout};a.prefixUrl&&(b=(new URL(a.prefixUrl,b)).href);0<a.retry.limit&&(d.retry=!0,d.maxRetries=a.retry.limit,d.retryDelay=a.retry.delay);d=ma(a.method,b,d);if(["text","json"].includes(a.responseType))try{var f=d.getBody("utf8")}catch(k){if(k.statusCode&&!a.throwHttpErrors)f="";else{if(400<=k.statusCode)throw new J("Server responded with status code ".concat(d.statusCode,"."),d.statusCode);throw k;}}"json"===a.responseType&&(f=JSON.parse(f));if("none"===
-a.responseType&&400<=d.statusCode&&a.throwHttpErrors)throw new J("Server responded with status code ".concat(d.statusCode,"."),d.statusCode);return{statusCode:d.statusCode,headers:d.headers,body:void 0===f?"":f}},U=function a(){for(var d=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{},f=function(a,f){return na(a,y(y({},d),f))},k=function(){var a=h[g];f[a]=function(d){return f(d,y({method:a},1<arguments.length&&void 0!==arguments[1]?arguments[1]:{}))}},g=0,h="get post put patch head delete".split(" ");g<
-h.length;g++)k();f.create=function(d){return a(d)};f.extend=function(f){return a(y(y({},d),f))};return f}();U.HTTPError=J;x=function(){function a(){K(this,a)}V(a,[{key:"getInfo",value:function(){return{id:"ScratchHTTP",name:"HTTP Requests",blocks:[{opcode:"httpRequest",blockType:Scratch.BlockType.REPORTER,text:"HTTP [method] [url]",arguments:{method:{type:Scratch.ArgumentType.STRING,defaultValue:"GET"},url:{type:Scratch.ArgumentType.STRING,defaultValue:"https://www.random.org/strings/?num=1&len=10&digits=on&upperalpha=on&loweralpha=on&format=plain"}}}]}}},
-{key:"httpRequest",value:function(a){return U(a.url,{method:a.method}).body}}]);return a}();Scratch.extensions.register(new x)})()
+(function(module, exports, __webpack_require__) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var formatMessage = __webpack_require__(68);
+
+var ArgumentType = __webpack_require__(58);
+
+var BlockType = __webpack_require__(46);
+
+var Cast = __webpack_require__(47);
+
+var Clone = __webpack_require__(103);
+
+var Timer = __webpack_require__(117);
+
+var StageLayering = __webpack_require__(105);
+/**
+ * Icon svg to be displayed at the left edge of each extension block, encoded as a data URI.
+ * @type {string}
+ */
+// eslint-disable-next-line max-len
+
+
+var blockIconURI = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMjcuODM0IDlhMyAzIDAgMDEyLjU0NiAxLjQxMmwuMDk3LjE2Ny4wNTQuMTEuMDUyLjExMi4wNDguMTEyIDYuMjIyIDE2YTMuMDAxIDMuMDAxIDAgMDEtMi4yNyA0LjA0MWwtLjE4LjAyNS0uMTE1LjAxMS0uMTE2LjAwNy0uMTE1LjAwM2gtMS44NTVhMyAzIDAgMDEtMi41NDUtMS40MTJsLS4wOTYtLjE2Ny0uMTA3LS4yMjItLjA0OC0uMTExTDI4Ljk4MyAyOGgtNC45M2wtLjQyMiAxLjA4N2EzLjAwMyAzLjAwMyAwIDAxLTIuNDEgMS44ODlsLS4xOTMuMDE4LS4xOTQuMDA2LTEuOTQtLjAwMi0uMDk2LjAwMkg3YTMgMyAwIDAxLTIuODctMy44NzJsLjA3Mi0uMjA5IDYuMTgzLTE2YTMuMDAxIDMuMDAxIDAgMDEyLjYwNC0xLjkxM0wxMy4xODQgOWwzLjkuMDAxLjA5OS0uMDAxIDMuOTI0LjAwMi4wOTUtLjAwMiAzLjkwNS4wMDIuMDk1LS4wMDJoMi42MzJ6IiBmaWxsLW9wYWNpdHk9Ii4xNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yNS42NjMgMjFsLjgxNi0yLjA5OS44MTYgMi4wOTloLTEuNjMyem0xMC4yNTggNi4yNzVsLTYuMjIzLTE2LS4wNzUtLjE2OC0uMDg1LS4xNDVjLS4zODctLjYxMS0xLjAxOS0uOTYyLTEuNzAzLS45NjJoLTIuNjMzbC0uMDk2LjAwMi0uMDYyLS4wMDFMMjEuMjAyIDEwbC0uMDk2LjAwMi0uMDYyLS4wMDFMMTcuMTgzIDEwbC0uMDg2LjAwMkwxMy4xODQgMTBsLS4xNjUuMDA3YTIuMDAzIDIuMDAzIDAgMDAtMS43MDIgMS4yNzJsLTYuMTgyIDE2LS4wNTkuMTc1QTIgMiAwIDAwNyAzMGgxMS43OThsLjA4OC0uMDAyIDEuOTQ5LjAwMi4xNjMtLjAwNy4xNjEtLjAxOWEyIDIgMCAwMDEuNTM5LTEuMjQ5bC42Ny0xLjcyNWg2LjI5OWwuNjcyIDEuNzI2LjA3NC4xNjcuMDg2LjE0NWMuMzg3LjYxMSAxLjAxOC45NjIgMS43MDMuOTYyaDEuODU1bC4xNzQtLjAwOS4xNjQtLjAyNGMuOTc2LS4xODcgMS42NjItMS4wMDMgMS42NjItMS45NjcgMC0uMjQ4LS4wNDYtLjQ5NC0uMTM2LS43MjV6IiBmaWxsLW9wYWNpdHk9Ii4yNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0xMy4xODMgMTFoMy44MThhMSAxIDAgMDEuOTQxIDEuMzM4bC01Ljc0MiAxNmExIDEgMCAwMS0uOTQuNjYySDdhMSAxIDAgMDEtLjkzMy0xLjM2bDYuMTgzLTE2YTEgMSAwIDAxLjkzMy0uNjR6IiBmaWxsPSIjNEM5N0ZGIi8+PHBhdGggZD0iTTE3LjE4MyAxMUgyMWExIDEgMCAwMS45NDIgMS4zMzhsLTUuNzQyIDE2YTEgMSAwIDAxLS45NDEuNjYyaC00LjI2YTEgMSAwIDAxLS45MzItMS4zNmw2LjE4My0xNmExIDEgMCAwMS45MzMtLjY0eiIgZmlsbD0iI0NGNjNDRiIvPjxwYXRoIGQ9Ik0yMS4yMDIgMTFIMjVhMSAxIDAgMDEuOTMzIDEuMzYxbC02LjIwMyAxNmExIDEgMCAwMS0uOTMyLjYzOUgxNWExIDEgMCAwMS0uOTMzLTEuMzYxbDYuMjAzLTE2YTEgMSAwIDAxLjkzMi0uNjM5eiIgZmlsbD0iI0ZGQkYwMCIvPjxwYXRoIGQ9Ik0yNy44MzQgMTFhMSAxIDAgMDEuOTMyLjYzOGw2LjIyMiAxNkExIDEgMCAwMTM0LjA1NiAyOWgtMS44NTRhMSAxIDAgMDEtLjkzMi0uNjM4TDMwLjM1MSAyNmgtNy42NjZsLS45MTkgMi4zNjJhMSAxIDAgMDEtLjkzMi42MzhIMTguOThhMSAxIDAgMDEtLjkzMi0xLjM2Mmw2LjIyMi0xNmExIDEgMCAwMS45MzItLjYzOHptLTEuMzE2IDUuMTQzTDI0LjI0IDIyaDQuNTU2bC0yLjI3OC01Ljg1N3oiIGZpbGw9IiNGRkYiLz48L2c+PC9zdmc+';
+var menuIconURI = blockIconURI;
+var DefaultText = 'Welcome to my project!';
+var DefaultAnimateText = 'Here we go!';
+var SANS_SERIF_ID = 'Sans Serif';
+var SERIF_ID = 'Serif';
+var HANDWRITING_ID = 'Handwriting';
+var MARKER_ID = 'Marker';
+var CURLY_ID = 'Curly';
+var PIXEL_ID = 'Pixel';
+var RANDOM_ID = 'Random';
+
+var Scratch3TextBlocks = /*#__PURE__*/function () {
+  function Scratch3TextBlocks(runtime) {
+    _classCallCheck(this, Scratch3TextBlocks);
+
+    /**
+     * The runtime instantiating this block package.
+     * @type {Runtime}
+     */
+    this.runtime = runtime;
+    this._onTargetWillExit = this._onTargetWillExit.bind(this);
+    this.runtime.on('targetWasRemoved', this._onTargetWillExit);
+    this._onTargetCreated = this._onTargetCreated.bind(this);
+    this.runtime.on('targetWasCreated', this._onTargetCreated);
+    this.runtime.on('PROJECT_STOP_ALL', this.stopAll.bind(this));
+  }
+
+  _createClass(Scratch3TextBlocks, [{
+    key: "getInfo",
+
+    /**
+     * @returns {object} metadata for this extension and its blocks.
+     */
+    value: function getInfo() {
+      return {
+        id: 'text',
+        name: 'Animated Text',
+        blockIconURI: blockIconURI,
+        menuIconURI: menuIconURI,
+        blocks: [{
+          opcode: 'setText',
+          text: formatMessage({
+            id: 'text.setText',
+            "default": 'show text [TEXT]',
+            description: ''
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            TEXT: {
+              type: ArgumentType.STRING,
+              defaultValue: DefaultText
+            }
+          }
+        }, {
+          opcode: 'animateText',
+          text: formatMessage({
+            id: 'text.animateText',
+            "default": '[ANIMATE] text [TEXT]',
+            description: ''
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            ANIMATE: {
+              type: ArgumentType.STRING,
+              menu: 'ANIMATE',
+              defaultValue: 'rainbow'
+            },
+            TEXT: {
+              type: ArgumentType.STRING,
+              defaultValue: DefaultAnimateText
+            }
+          }
+        }, {
+          opcode: 'clearText',
+          text: formatMessage({
+            id: 'text.clearText',
+            "default": 'show sprite',
+            description: ''
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {}
+        }, '---', {
+          opcode: 'setFont',
+          text: formatMessage({
+            id: 'text.setFont',
+            "default": 'set font to [FONT]',
+            description: ''
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            FONT: {
+              type: ArgumentType.STRING,
+              menu: 'FONT',
+              defaultValue: 'Pixel'
+            }
+          }
+        }, {
+          opcode: 'setColor',
+          text: formatMessage({
+            id: 'text.setColor',
+            "default": 'set text color to [COLOR]',
+            description: ''
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            COLOR: {
+              type: ArgumentType.COLOR
+            }
+          }
+        }, // {
+        //     opcode: 'setSize',
+        //     text: formatMessage({
+        //         id: 'text.setSize',
+        //         default: 'set text size to [SIZE]',
+        //         description: ''
+        //     }),
+        //     blockType: BlockType.COMMAND,
+        //     arguments: {
+        //         SIZE: {
+        //             type: ArgumentType.NUMBER,
+        //             defaultValue: 30
+        //         }
+        //     }
+        // },
+        {
+          opcode: 'setWidth',
+          text: formatMessage({
+            id: 'text.setWidth',
+            "default": 'set width to [WIDTH] aligned [ALIGN]',
+            description: ''
+          }),
+          blockType: BlockType.COMMAND,
+          arguments: {
+            WIDTH: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 200
+            },
+            ALIGN: {
+              type: ArgumentType.STRING,
+              defaultValue: 'left',
+              menu: 'ALIGN'
+            }
+          }
+        } // {
+        //     opcode: 'setAlign',
+        //     text: formatMessage({
+        //         id: 'text.setAlign',
+        //         default: 'align text [ALIGN] width [WIDTH]',
+        //         description: ''
+        //     }),
+        //     blockType: BlockType.COMMAND,
+        //     arguments: {
+        //         ALIGN: {
+        //             type: ArgumentType.STRING,
+        //             defaultValue: 'left',
+        //             menu: 'ALIGN'
+        //         },
+        //         WIDTH: {
+        //             type: ArgumentType.NUMBER,
+        //             defaultValue: 200
+        //         }
+        //     }
+        // },
+        // {
+        //     opcode: 'rainbow',
+        //     text: formatMessage({
+        //         id: 'text.rainbow',
+        //         default: 'rainbow for [SECS] seconds',
+        //         description: ''
+        //     }),
+        //     blockType: BlockType.COMMAND,
+        //     arguments: {
+        //         SECS: {
+        //             type: ArgumentType.NUMBER,
+        //             defaultValue: 1
+        //         }
+        //     }
+        // }
+        // '---',
+        // {
+        //     opcode: 'addText',
+        //     text: formatMessage({
+        //         id: 'text.addText',
+        //         default: 'add text [TEXT]',
+        //         description: ''
+        //     }),
+        //     blockType: BlockType.COMMAND,
+        //     arguments: {
+        //         TEXT: {
+        //             type: ArgumentType.STRING,
+        //             defaultValue: ' and more!'
+        //         }
+        //     }
+        // },
+        // {
+        //     opcode: 'addLine',
+        //     text: formatMessage({
+        //         id: 'text.addLine',
+        //         default: 'add line [TEXT]',
+        //         description: ''
+        //     }),
+        //     blockType: BlockType.COMMAND,
+        //     arguments: {
+        //         TEXT: {
+        //             type: ArgumentType.STRING,
+        //             defaultValue: 'more lines!'
+        //         }
+        //     }
+        // },
+        // '---',
+        // {
+        //     opcode: 'setOutlineWidth',
+        //     text: formatMessage({
+        //         id: 'text.setOutlineWidth',
+        //         default: 'set outline width to [WIDTH]',
+        //         description: ''
+        //     }),
+        //     blockType: BlockType.COMMAND,
+        //     arguments: {
+        //         WIDTH: {
+        //             type: ArgumentType.NUMBER,
+        //             defaultValue: 1
+        //         }
+        //     }
+        // },
+        // {
+        //     opcode: 'setOutlineColor',
+        //     text: formatMessage({
+        //         id: 'text.setOutlineColor',
+        //         default: 'set outline color to [COLOR]',
+        //         description: ''
+        //     }),
+        //     blockType: BlockType.COMMAND,
+        //     arguments: {
+        //         COLOR: {
+        //             type: ArgumentType.COLOR
+        //         }
+        //     }
+        // }
+        ],
+        menus: {
+          FONT: {
+            items: [{
+              text: 'Sans Serif',
+              value: SANS_SERIF_ID
+            }, {
+              text: 'Serif',
+              value: SERIF_ID
+            }, {
+              text: 'Handwriting',
+              value: HANDWRITING_ID
+            }, {
+              text: 'Marker',
+              value: MARKER_ID
+            }, {
+              text: 'Curly',
+              value: CURLY_ID
+            }, {
+              text: 'Pixel',
+              value: PIXEL_ID
+            }, {
+              text: 'random font',
+              value: RANDOM_ID
+            }]
+          },
+          ALIGN: {
+            items: [{
+              text: 'left',
+              value: 'left'
+            }, {
+              text: 'center',
+              value: 'center'
+            }, {
+              text: 'right',
+              value: 'right'
+            }]
+          },
+          ANIMATE: {
+            items: [{
+              text: 'type',
+              value: 'type'
+            }, {
+              text: 'rainbow',
+              value: 'rainbow'
+            }, {
+              text: 'zoom',
+              value: 'zoom'
+            }]
+          }
+        }
+      };
+    }
+  }, {
+    key: "setText",
+    value: function setText(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.text = this._formatText(args.TEXT);
+      textState.visible = true;
+      textState.animating = false;
+
+      this._renderText(util.target); // Yield until the next tick.
+
+
+      return Promise.resolve();
+    }
+  }, {
+    key: "clearText",
+    value: function clearText(args, util) {
+      var target = util.target;
+
+      var textState = this._getTextState(target);
+
+      textState.visible = false; // Set state so that clones can know not to render text
+
+      textState.animating = false;
+      var costume = target.getCostumes()[target.currentCostume];
+      this.runtime.renderer.updateDrawableSkinId(target.drawableID, costume.skinId); // Yield until the next tick.
+
+      return Promise.resolve();
+    }
+  }, {
+    key: "stopAll",
+    value: function stopAll() {
+      var _this = this;
+
+      this.runtime.targets.forEach(function (target) {
+        _this.clearText({}, {
+          target: target
+        });
+      });
+    }
+  }, {
+    key: "addText",
+    value: function addText(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.text += this._formatText(args.TEXT);
+      textState.visible = true;
+      textState.animating = false;
+
+      this._renderText(util.target); // Yield until the next tick.
+
+
+      return Promise.resolve();
+    }
+  }, {
+    key: "addLine",
+    value: function addLine(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.text += "\n".concat(this._formatText(args.TEXT));
+      textState.visible = true;
+      textState.animating = false;
+
+      this._renderText(util.target); // Yield until the next tick.
+
+
+      return Promise.resolve();
+    }
+  }, {
+    key: "setFont",
+    value: function setFont(args, util) {
+      var textState = this._getTextState(util.target);
+
+      if (args.FONT === RANDOM_ID) {
+        textState.font = this._randomFontOtherThan(textState.font);
+      } else {
+        textState.font = args.FONT;
+      }
+
+      this._renderText(util.target);
+    }
+  }, {
+    key: "_randomFontOtherThan",
+    value: function _randomFontOtherThan(currentFont) {
+      var otherFonts = this.FONT_IDS.filter(function (id) {
+        return id !== currentFont;
+      });
+      return otherFonts[Math.floor(Math.random() * otherFonts.length)];
+    }
+  }, {
+    key: "setColor",
+    value: function setColor(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.color = args.COLOR;
+
+      this._renderText(util.target);
+    }
+  }, {
+    key: "setWidth",
+    value: function setWidth(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.maxWidth = Cast.toNumber(args.WIDTH);
+      textState.align = args.ALIGN;
+
+      this._renderText(util.target);
+    }
+  }, {
+    key: "setSize",
+    value: function setSize(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.size = Cast.toNumber(args.SIZE);
+
+      this._renderText(util.target);
+    }
+  }, {
+    key: "setAlign",
+    value: function setAlign(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.maxWidth = Cast.toNumber(args.WIDTH);
+      textState.align = args.ALIGN;
+
+      this._renderText(util.target);
+    }
+  }, {
+    key: "setOutlineWidth",
+    value: function setOutlineWidth(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.strokeWidth = Cast.toNumber(args.WIDTH);
+
+      this._renderText(util.target);
+    }
+  }, {
+    key: "setOutlineColor",
+    value: function setOutlineColor(args, util) {
+      var textState = this._getTextState(util.target);
+
+      textState.strokeColor = args.COLOR;
+      textState.visible = true;
+
+      this._renderText(util.target);
+    }
+    /* 
+     * The animations (type, zoom and rainbow) all follow the same pattern.
+     * 1. The inital state of the animation is set and rendered
+     * 2. Variables to indicate the final state are stored on the textState
+     * 3. A promise is returned that starts a tick interval for some frame rate
+     * 4. The tick function checks for animation-specific end condition (like time)
+     *    and global end condition (like being cancelled by stopAll or setText)
+     * 5. If the end conditions are met, the tick function does the following:
+     *      (a) Sets the final state
+     *      (b) Clears the animation state variables
+     *      (c) Clears the interval to stop tick from running
+     *      (d) Resolves the promise to indicate the block is done
+     * 
+     * We do not use the stack timer/stack counter functionality the VM provides
+     * because those would leave the animation hanging in the middle if the stack is cancelled.
+     * 
+     * TODO abstract this shared functionality for all animations.
+     */
+
+  }, {
+    key: "_animateText",
+    value: function _animateText(args, util) {
+      var _this2 = this;
+
+      var target = util.target;
+
+      var textState = this._getTextState(target);
+
+      if (textState.fullText !== null) return; // Let the running animation finish, do nothing
+      // On "first tick", set the text and force animation flags on and render
+
+      textState.fullText = this._formatText(args.TEXT);
+      textState.text = textState.fullText[0]; // Start with first char visible
+
+      textState.visible = true;
+      textState.animating = true;
+
+      this._renderText(target);
+
+      this.runtime.requestRedraw();
+      return new Promise(function (resolve) {
+        var interval = setInterval(function () {
+          if (textState.animating && textState.visible && textState.text !== textState.fullText) {
+            textState.text = textState.fullText.substring(0, textState.text.length + 1);
+          } else {
+            // NB there is no need to update the .text state here, since it is at the end of the
+            // animation (when text == fullText), is being cancelled by force setting text,
+            // or is being cancelled by hitting the stop button which hides the text anyway. 
+            textState.fullText = null;
+            clearInterval(interval);
+            resolve();
+          }
+
+          _this2._renderText(target);
+
+          _this2.runtime.requestRedraw();
+        }, 60
+        /* ms, about 1 char every 2 frames */
+        );
+      });
+    }
+  }, {
+    key: "_zoomText",
+    value: function _zoomText(args, util) {
+      var _this3 = this;
+
+      var target = util.target;
+
+      var textState = this._getTextState(target);
+
+      if (textState.targetSize !== null) return; // Let the running animation finish, do nothing
+
+      var timer = new Timer();
+      var durationMs = Cast.toNumber(args.SECS || 0.5) * 1000; // On "first tick", set the text and force animation flags on and render
+
+      textState.text = this._formatText(args.TEXT);
+      textState.visible = true;
+      textState.animating = true;
+      textState.targetSize = target.size;
+      target.setSize(0);
+
+      this._renderText(target);
+
+      this.runtime.requestRedraw();
+      timer.start();
+      return new Promise(function (resolve) {
+        var interval = setInterval(function () {
+          var timeElapsed = timer.timeElapsed();
+
+          if (textState.animating && textState.visible && timeElapsed < durationMs) {
+            target.setSize(textState.targetSize * timeElapsed / durationMs);
+          } else {
+            target.setSize(textState.targetSize);
+            textState.targetSize = null;
+            clearInterval(interval);
+            resolve();
+          }
+
+          _this3._renderText(target);
+
+          _this3.runtime.requestRedraw();
+        }, _this3.runtime.currentStepTime);
+      });
+    }
+  }, {
+    key: "animateText",
+    value: function animateText(args, util) {
+      switch (args.ANIMATE) {
+        case 'rainbow':
+          return this.rainbow(args, util);
+
+        case 'type':
+          return this._animateText(args, util);
+
+        case 'zoom':
+          return this._zoomText(args, util);
+      }
+    }
+  }, {
+    key: "rainbow",
+    value: function rainbow(args, util) {
+      var _this4 = this;
+
+      var target = util.target;
+
+      var textState = this._getTextState(target);
+
+      if (textState.rainbow) return; // Let the running animation finish, do nothing
+
+      var timer = new Timer();
+      var durationMs = Cast.toNumber(args.SECS || 2) * 1000; // On "first tick", set the text and force animation flags on and render
+
+      textState.text = this._formatText(args.TEXT);
+      textState.visible = true;
+      textState.animating = true;
+      textState.rainbow = true;
+
+      this._renderText(target);
+
+      timer.start();
+      return new Promise(function (resolve) {
+        var interval = setInterval(function () {
+          var timeElapsed = timer.timeElapsed();
+
+          if (textState.animating && textState.visible && timeElapsed < durationMs) {
+            textState.rainbow = true;
+            target.setEffect('color', timeElapsed / -5);
+          } else {
+            textState.rainbow = false;
+            target.setEffect('color', 0);
+            clearInterval(interval);
+            resolve();
+          }
+
+          _this4._renderText(target);
+        }, _this4.runtime.currentStepTime);
+      });
+    }
+  }, {
+    key: "_getTextState",
+    value: function _getTextState(target) {
+      var textState = target.getCustomState(Scratch3TextBlocks.STATE_KEY);
+
+      if (!textState) {
+        textState = Clone.simple(Scratch3TextBlocks.DEFAULT_TEXT_STATE);
+        target.setCustomState(Scratch3TextBlocks.STATE_KEY, textState);
+      }
+
+      return textState;
+    }
+  }, {
+    key: "_formatText",
+    value: function _formatText(text) {
+      if (text === '') return text; // Non-integers should be rounded to 2 decimal places (no more, no less), unless they're small enough that
+      // rounding would display them as 0.00. This matches 2.0's behavior:
+      // https://github.com/LLK/scratch-flash/blob/2e4a402ceb205a042887f54b26eebe1c2e6da6c0/src/scratch/ScratchSprite.as#L579-L585
+
+      if (typeof text === 'number' && Math.abs(text) >= 0.01 && text % 1 !== 0) {
+        text = text.toFixed(2);
+      }
+
+      text = Cast.toString(text);
+      return text;
+    }
+  }, {
+    key: "_renderText",
+    value: function _renderText(target) {
+      if (!this.runtime.renderer) return;
+
+      var textState = this._getTextState(target);
+
+      if (!textState.visible) return; // Resetting to costume is done in clear block, early return here is for clones
+
+      textState.skinId = this.runtime.renderer.updateTextCostumeSkin(textState);
+      this.runtime.renderer.updateDrawableSkinId(target.drawableID, textState.skinId);
+    }
+    /**
+     * When a Target is cloned, clone the text state.
+     * @param {Target} newTarget - the newly created target.
+     * @param {Target} [sourceTarget] - the target used as a source for the new clone, if any.
+     * @listens Runtime#event:targetWasCreated
+     * @private
+     */
+
+  }, {
+    key: "_onTargetCreated",
+    value: function _onTargetCreated(newTarget, sourceTarget) {
+      var _this5 = this;
+
+      if (sourceTarget) {
+        var sourceTextState = sourceTarget.getCustomState(Scratch3TextBlocks.STATE_KEY);
+
+        if (sourceTextState) {
+          newTarget.setCustomState(Scratch3TextBlocks.STATE_KEY, Clone.simple(sourceTextState));
+          var newTargetState = newTarget.getCustomState(Scratch3TextBlocks.STATE_KEY); // Note here that clones do not share skins with their original target. This is a subtle but important
+          // departure from the rest of Scratch, where clones always stay in sync with the originals costume.
+          // The "rule" is anything that can be done with the blocks is clone-specific, since that is where you make clones,
+          // but anything outside of the blocks (costume/sounds) are shared.
+          // For example, graphic effects are clone-specific, but changing the costume in the paint editor is shared.
+          // Since you can change the text on the skin from the blocks, each clone needs its own skin.
+
+          newTargetState.skinId = null; // Unset all of the animation flags
+
+          newTargetState.rainbow = false;
+          newTargetState.targetSize = null;
+          newTargetState.fullText = null;
+          newTargetState.animating = false; // Must wait until the drawable has been initialized, but before render. We can
+          // wait for the first EVENT_TARGET_VISUAL_CHANGE for this.
+
+          var onDrawableReady = function onDrawableReady() {
+            _this5._renderText(newTarget);
+
+            newTarget.off('EVENT_TARGET_VISUAL_CHANGE', onDrawableReady);
+          };
+
+          newTarget.on('EVENT_TARGET_VISUAL_CHANGE', onDrawableReady);
+        }
+      }
+    }
+  }, {
+    key: "_onTargetWillExit",
+    value: function _onTargetWillExit(target) {
+      var textState = this._getTextState(target);
+
+      if (textState.skinId) {
+        // The drawable will get cleaned up by RenderedTarget#dispose, but that doesn't
+        // automatically destroy attached skins (because they are usually shared between clones).
+        // For text skins, however, all clones get their own, so we need to manually destroy them.
+        this.runtime.renderer.destroySkin(textState.skinId);
+        textState.skinId = null;
+      }
+    }
+  }, {
+    key: "FONT_IDS",
+    get: function get() {
+      return [SANS_SERIF_ID, SERIF_ID, HANDWRITING_ID, MARKER_ID, CURLY_ID, PIXEL_ID];
+    }
+  }], [{
+    key: "DEFAULT_TEXT_STATE",
+    get: function get() {
+      return {
+        skinId: null,
+        text: DefaultText,
+        font: 'Handwriting',
+        color: 'hsla(225, 15%, 40%, 1',
+        // GUI's text-primary color
+        size: 24,
+        maxWidth: 480,
+        align: 'center',
+        strokeWidth: 0,
+        strokeColor: 'black',
+        rainbow: false,
+        visible: false,
+        targetSize: null,
+        fullText: null
+      };
+    }
+    /**
+     * The key to load & store a target's text-related state.
+     * @type {string}
+     */
+
+  }, {
+    key: "STATE_KEY",
+    get: function get() {
+      return 'Scratch.text';
+    }
+  }]);
+
+  return Scratch3TextBlocks;
+}();
+
+module.exports = Scratch3TextBlocks;
+
+/***/ })
